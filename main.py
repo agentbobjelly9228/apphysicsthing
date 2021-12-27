@@ -1,11 +1,13 @@
 import pyrebase
 import time
-import playsound
 import threading
 import pygame
+from subprocess import call
+import random
 pygame.mixer.init()
 
-
+christmasMix = ["ChristmasEve.wav",
+                "OComeAllYeFaithful.wav", "wayInAManger.wav", "Hallelujah.wav", "GoTellItOnTheMountain.wav"]
 config = {
     "apiKey": "AIzaSyD_ArS96XYswPJs9FFFBI01SCpNXax9H9c",
     "authDomain": "apphysics1energyconservati.firebaseapp.com",
@@ -44,6 +46,8 @@ def thing():
             user = auth.sign_in_with_email_and_password(
                 "agentbobjelly@gmail.com", "poiuytrewqPOIUYTREWQ")['idToken']
             com = db.child('command').get(token=user).val()
+        # vol = db.child('vol')
+        # call(["amixer", "-D", "pulse", "sset", "Master", str(vol) + "%"])
         if com == "Bark":
             if times < max and barking:
                 times += 1
@@ -51,8 +55,8 @@ def thing():
             else:
                 barking = True
                 times = 0
-                pygame.mixer.music.load("bark2.wav")
-                sound = pygame.mixer.Sound("bark2.wav")
+                pygame.mixer.music.load("dog.wav")
+                sound = pygame.mixer.Sound("dog.wav")
                 pygame.mixer.music.play()
                 max = pygame.mixer.Sound.get_length(sound)
         elif com == "Grace Got You":
@@ -66,6 +70,74 @@ def thing():
                 sound = pygame.mixer.Sound("Grace.wav")
                 pygame.mixer.music.play()
                 max = pygame.mixer.Sound.get_length(sound)
+        elif com == "This Christmas Eve":
+            if times < max and barking:
+                times += 1
+
+            else:
+                barking = True
+                times = 0
+                pygame.mixer.music.load("ChristmasEve.wav")
+                sound = pygame.mixer.Sound("ChristmasEve.wav")
+                pygame.mixer.music.play()
+                max = pygame.mixer.Sound.get_length(sound)
+        elif com == "Oh Come All Ye Faithful":
+            if times < max and barking:
+                times += 1
+
+            else:
+                barking = True
+                times = 0
+                pygame.mixer.music.load("OComeAllYeFaithful.wav")
+                sound = pygame.mixer.Sound("OComeAllYeFaithful.wav")
+                pygame.mixer.music.play()
+                max = pygame.mixer.Sound.get_length(sound)
+        elif com == "Away In A Manger":
+            if times < max and barking:
+                times += 1
+
+            else:
+                barking = True
+                times = 0
+                pygame.mixer.music.load("AwayInAManger.wav")
+                sound = pygame.mixer.Sound("AwayInAManger.wav")
+                pygame.mixer.music.play()
+                max = pygame.mixer.Sound.get_length(sound)
+        elif com == "Hallelujah":
+            if times < max and barking:
+                times += 1
+
+            else:
+                barking = True
+                times = 0
+                pygame.mixer.music.load("Hallelujah.wav")
+                sound = pygame.mixer.Sound("Hallelujah.wav")
+                pygame.mixer.music.play()
+                max = pygame.mixer.Sound.get_length(sound)
+        elif com == "Go Tell It On The Mountain":
+            if times < max and barking:
+                times += 1
+
+            else:
+                barking = True
+                times = 0
+                pygame.mixer.music.load("GoTellItOnTheMountain.wav")
+                sound = pygame.mixer.Sound("GoTellItOnTheMountain.wav")
+                pygame.mixer.music.play()
+                max = pygame.mixer.Sound.get_length(sound)
+        elif com == "Christmas mix":
+            if times < max and barking:
+                times += 1
+
+            else:
+                song = random.choice(christmasMix)
+                barking = True
+                times = 0
+                pygame.mixer.music.load(song)
+                sound = pygame.mixer.Sound(song)
+                pygame.mixer.music.play()
+                max = pygame.mixer.Sound.get_length(sound)
+
         else:
             barking = False
             times = 0

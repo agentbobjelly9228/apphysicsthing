@@ -2,10 +2,10 @@ from pydub import AudioSegment
 import random
 # sound = AudioSegment.from_mp3("/path/to/file.mp3")
 # sound.export("/output/path/file.wav", format="wav")
-generalMix = ['nevergonna.mp3', 'peaches.mp3', 'Grace.wav']
+generalMix = ['notover.mp3', 'general.mp3']
 def combine_mp3_files(output_file, songs):
     combined = AudioSegment.empty()
-    random.shuffle(songs)
+    # random.shuffle(songs)
     for file in songs:
         audio = AudioSegment.from_file(file, format="mp3")
         combined += audio

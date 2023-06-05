@@ -7,7 +7,7 @@ from pycaw.pycaw import AudioUtilities, ISimpleAudioVolume
 from pydub import AudioSegment
 
 stevenHe = ['punishment2.mp3', 'punishment3.mp3', 'flex.mp3']
-generalMix = ['nevergonna.mp3', 'Grace.wav', 'dog.wav', 'peaches.mp3', "promises.mp3", "fallen.mp3", "500.mp3"]
+generalMix = ['nevergonna.mp3', 'Grace.wav', 'dog.wav', 'peaches.mp3', "promises.mp3", "fallen.mp3", "500.mp3", "likeIAm.mp3", "foundation.mp3", "GodOnlyKnows.mp3", "together.mp3", "notover.mp3"]
 christmasMix = ["ChristmasEve.wav",
                 "OComeAllYeFaithful.wav", "wayInAManger.wav", "Hallelujah.wav", "GoTellItOnTheMountain.wav"]
 
@@ -15,14 +15,18 @@ commands_to_songs = {
     "Bark": "dog.wav",
     "Grace Got You": "Grace.wav",
     "punishment2": "punishment2.mp3",
-    "Steven Mix": stevenHe,
-    "General Mix": generalMix,
-    "Christmas Mix": christmasMix,
+    "Steven Mix": "steven.mp3",
+    "General Mix": "general.mp3",
     "Rick Roll": "nevergonna.mp3",
     "Peaches": "peaches.mp3",
     "Promises": "promises.mp3",
     "Fallen Kingdom": "fallen.mp3",
-    "500": "500.mp3"
+    "500": "500.mp3",
+    "Like I Am": "likeIAm.mp3",
+    "Together": "together.mp3",
+    "Firm Foundation": "foundation.mp3",
+    "God Only Knows": "GodOnlyKnows.mp3",
+    "Not Over Yet": "notover.mp3",
 }
 pygame.mixer.init()
 pygame.init()
@@ -45,15 +49,14 @@ def set_sound(com):
     if com in commands_to_songs:
         song = commands_to_songs[com]
 
-        if isinstance(song, list):
-            combine_mp3_files("temp.mp3", song)
-            pygame.mixer.music.load("temp.mp3")
-            pygame.mixer.music.play(-1)
+        # if isinstance(song, list):
+        #     combine_mp3_files("general.mp3", song)
+        #     pygame.mixer.music.load("general.mp3")
+        #     pygame.mixer.music.play(-1)
             
 
-        else:
-            pygame.mixer.music.load(song)
-            pygame.mixer.music.play(-1)
+        pygame.mixer.music.load(song)
+        pygame.mixer.music.play(-1)
 
 @anvil.server.callable
 def set_volume(vol):

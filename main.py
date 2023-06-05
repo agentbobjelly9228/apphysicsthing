@@ -6,6 +6,8 @@ from subprocess import call
 import random
 pygame.mixer.init()
 
+stevenHe = ['punishment2.mp3', 'punishment3.mp3', 'flex.mp3']
+generalMix = ['nevergonna.mp3', 'Grace.wav', 'dog.wav', 'peaches.mp3']
 christmasMix = ["ChristmasEve.wav",
                 "OComeAllYeFaithful.wav", "wayInAManger.wav", "Hallelujah.wav", "GoTellItOnTheMountain.wav"]
 config = {
@@ -70,6 +72,17 @@ def thing():
                 sound = pygame.mixer.Sound("Grace.wav")
                 pygame.mixer.music.play()
                 max = pygame.mixer.Sound.get_length(sound)
+        elif com == "punishment2":
+            if times < max and barking:
+                times += 1
+
+            else:
+                barking = True
+                times = 0
+                pygame.mixer.music.load("punishment2.mp3")
+                sound = pygame.mixer.Sound("punishment2.mp3")
+                pygame.mixer.music.play()
+                max = pygame.mixer.Sound.get_length(sound)
         elif com == "This Christmas Eve":
             if times < max and barking:
                 times += 1
@@ -131,6 +144,30 @@ def thing():
 
             else:
                 song = random.choice(christmasMix)
+                barking = True
+                times = 0
+                pygame.mixer.music.load(song)
+                sound = pygame.mixer.Sound(song)
+                pygame.mixer.music.play()
+                max = pygame.mixer.Sound.get_length(sound)
+        elif com == "Steven Mix":
+            if times < max and barking:
+                times += 1
+
+            else:
+                song = random.choice(stevenHe)
+                barking = True
+                times = 0
+                pygame.mixer.music.load(song)
+                sound = pygame.mixer.Sound(song)
+                pygame.mixer.music.play()
+                max = pygame.mixer.Sound.get_length(sound)
+        elif com == "General Mix":
+            if times < max and barking:
+                times += 1
+
+            else:
+                song = random.choice(generalMix)
                 barking = True
                 times = 0
                 pygame.mixer.music.load(song)
